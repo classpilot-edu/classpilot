@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassPilot — Learn. Connect. Progress.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<!-- =========================================================
+     LOGIN PAGE
+     ========================================================= -->
+<div id="loginPage">
+  <div class="login-shell">
+
+    <div class="login-visual">
+      <div class="horizon"></div>
+      <div class="flight-path"></div>
+
+      <div class="login-visual-top">
+        <div class="brand">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9.5" stroke="rgba(240,168,58,0.4)" stroke-width="1"/>
+              <g class="needle"><path d="M12 4.5 L14.4 12 L12 19.5 L9.6 12 Z" fill="#F0A83A"/></g>
+              <circle cx="12" cy="12" r="1.6" fill="#0A1220" stroke="#F0A83A" stroke-width="1"/>
+            </svg>
+          </span>
+          <div>
+            <div class="brand-name" style="color:#fff;">ClassPilot</div>
+            <div class="brand-tag">Learn. Connect. Progress.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-visual-quote">
+        <h2>One flight deck for every class recording.</h2>
+        <p>Teachers publish Google Drive class links from a single dashboard. Students sign in and watch — no downloads, no back-and-forth, no lost links.</p>
+        <div class="login-stats">
+          <div><b>01</b><span>Teacher</span></div>
+          <div><b>10</b><span>Students</span></div>
+          <div><b>05+</b><span>Classes Ready</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-form-wrap">
+      <div class="login-card">
+        <div class="brand">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9.5" stroke="rgba(240,168,58,0.4)" stroke-width="1"/>
+              <path d="M12 4.5 L14.4 12 L12 19.5 L9.6 12 Z" fill="#F0A83A"/>
+              <circle cx="12" cy="12" r="1.6" fill="#0A1220" stroke="#F0A83A" stroke-width="1"/>
+            </svg>
+          </span>
+          <div>
+            <div class="brand-name">ClassPilot</div>
+            <div class="brand-tag">Learn. Connect. Progress.</div>
+          </div>
+        </div>
+
+        <h1>Sign in</h1>
+        <p class="sub">Use your ClassPilot username and password to continue.</p>
+
+        <div class="role-toggle">
+          <button type="button" class="active" data-role="student">Student</button>
+          <button type="button" data-role="teacher">Teacher</button>
+        </div>
+
+        <div class="form-error" id="loginError"></div>
+
+        <form id="loginForm">
+          <div class="field">
+            <label for="loginUsername">Username</label>
+            <input type="text" id="loginUsername" autocomplete="username" placeholder="e.g. student1" required>
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <div class="pw-field">
+              <input type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••" required>
+              <button type="button" class="pw-toggle" id="pwToggle">Show</button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Log In</button>
+        </form>
+
+        <div class="login-hint">
+          <strong>Demo credentials —</strong><br>
+          Teacher: <b>teacher</b> / <b>teacher123</b><br>
+          Student: <b>student1</b>…<b>student10</b> / <b>student123</b>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================================================
+     MAIN APP SHELL (Teacher + Student dashboards)
+     ========================================================= -->
+<div id="app" class="hidden">
+  <div class="app-shell">
+
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+    <aside class="sidebar" id="sidebar"><!-- injected by script.js --></aside>
+
+    <div class="main">
+      <div class="topbar">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          </button>
+          <div>
+            <h1 id="topbarTitle">Dashboard</h1>
+            <div class="topbar-sub" id="topbarSub"></div>
+          </div>
+        </div>
+        <div class="topbar-right" id="topbarBadge"></div>
+      </div>
+
+      <div class="page">
+
+        <!-- ============ TEACHER SECTIONS ============ -->
+        <section class="page-section" id="t-home"></section>
+
+        <section class="page-section" id="t-add"></section>
+
+        <section class="page-section" id="t-manage">
+          <div class="steps-card">
+            <h3>How to publish a class in 4 steps</h3>
+            <p class="lead">Videos stay in Google Drive — ClassPilot only stores the link.</p>
+            <div class="steps-list">
+              <div class="step-item"><span class="step-num">01</span><p>Upload the class recording to Google Drive.</p></div>
+              <div class="step-item"><span class="step-num">02</span><p>Set sharing to "Anyone with the link — Viewer".</p></div>
+              <div class="step-item"><span class="step-num">03</span><p>Copy the sharing link from Drive.</p></div>
+              <div class="step-item"><span class="step-num">04</span><p>Paste it into Add Class and save.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-section" id="t-students"></section>
+
+        <section class="page-section" id="t-profile"></section>
+
+        <!-- ============ STUDENT SECTIONS ============ -->
+        <section class="page-section" id="s-home"></section>
+
+        <section class="page-section" id="s-classes"></section>
+
+        <section class="page-section" id="s-profile"></section>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
